@@ -160,6 +160,18 @@ export class FetchApiDataService {
     );
   }
 
+  // Making the api call for the delete user endpoint
+  deleteUser(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const token = localStorage.getItem('token');
+    return this.http.delete(apiUrl + 'users/' + user.Username, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
   // Non-typed response extraction
   private extractResponseData(res: any): any {
