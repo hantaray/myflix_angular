@@ -120,9 +120,6 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-    user.FavoriteMovies.push(movieTitle);
-    localStorage.setItem('user', JSON.stringify(user));
-
     return this.http.put(apiUrl + `users/${user.Username}/${movieTitle}`, {}, {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
@@ -133,6 +130,22 @@ export class FetchApiDataService {
       catchError(this.handleError),
     );
   }
+
+  // Making the api call for the delete from favorite movies endpoint
+  deleteFromFavorites(movieTitle: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    return this.http.delete(apiUrl + `users/${user.Username}/${movieTitle}`, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
 
   // Non-typed response extraction
   private extractResponseData(res: any): any {
