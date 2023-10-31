@@ -115,6 +115,25 @@ export class FetchApiDataService {
     );
   }
 
+  // Making the api call for the add to favorite movies endpoint
+  addToFavorites(movieTitle: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    user.FavoriteMovies.push(movieTitle);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    return this.http.put(apiUrl + `users/${user.Username}/${movieTitle}`, {}, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError),
+    );
+  }
+
   // Non-typed response extraction
   private extractResponseData(res: any): any {
     const body = res;
