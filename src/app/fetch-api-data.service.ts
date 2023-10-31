@@ -31,7 +31,7 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the api call for getting all movies endpoint
+  // Making the api call for the movies endpoint
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -45,10 +45,24 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the api call for getting one movie endpoint
+  // Making the api call for the movie endpoint
   getMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/' + title, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+  // Making the api call for the director endpoint
+  getDirector(name: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'movies/directors/' + name, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
