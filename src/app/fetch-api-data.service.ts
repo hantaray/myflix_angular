@@ -146,6 +146,20 @@ export class FetchApiDataService {
     );
   }
 
+  // Making the api call for the update user endpoint
+  updateUser(): Observable<any> {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const token = localStorage.getItem('token');
+    return this.http.put(apiUrl + 'users/' + user.Username, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
 
   // Non-typed response extraction
   private extractResponseData(res: any): any {
