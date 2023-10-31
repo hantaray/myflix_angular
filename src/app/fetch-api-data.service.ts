@@ -15,7 +15,7 @@ export class FetchApiDataService {
   constructor(private http: HttpClient) {
   }
 
-  // Making the api call for the user registration endpoint
+  // Making the api call for the registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -23,7 +23,7 @@ export class FetchApiDataService {
     );
   }
 
-  // Making the api call for the user login endpoint
+  // Making the api call for the login endpoint
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -77,6 +77,20 @@ export class FetchApiDataService {
   getGenre(name: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/genres/' + name, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
+  // Making the api call for the user endpoint
+  getUser(name: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'users/' + name, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
