@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,7 +24,6 @@ export class MovieCardComponent {
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
     });
   }

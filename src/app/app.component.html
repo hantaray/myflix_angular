@@ -4,10 +4,13 @@
   </button>
   <span style="margin-right: 15px;">MyFlix</span>
   <span class="example-spacer"></span>
-  <nav mat-tab-nav-bar>
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
     <a mat-tab-link>Movies</a>
     <a mat-tab-link>Profile</a>
   </nav>
+  <!-- This is needed for the mat-tab-nav-bar (with [tabPanel]="tabPanel" above)
+    (https://material.angular.io/components/tabs/examples) -->
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 </mat-toolbar>
 
 <router-outlet></router-outlet>.
