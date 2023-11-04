@@ -28,9 +28,12 @@ export class MovieCardComponent {
     });
   }
 
-  openGenreDialog(): void {
+  openGenreDialog(movie: any): void {
     this.dialog.open(GenreDialogComponent, {
-      width: '280px'
+      width: '280px',
+      data: {
+        movie: movie
+      }
     });
   }
 }

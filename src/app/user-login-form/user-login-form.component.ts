@@ -31,7 +31,6 @@ export class UserLoginFormComponent {
   // This is the function responsible for sending the form inputs to the backend
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
-      // Logic for a successful user login goes here! (To do)
       this.dialogRef.close(); // This will close the modal on success!
       console.log(result)
       localStorage.setItem('user', JSON.stringify(result.user));

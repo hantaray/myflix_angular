@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-genre-dialog',
@@ -7,18 +8,22 @@ import { FetchApiDataService } from '../fetch-api-data.service';
   styleUrls: ['./genre-dialog.component.scss']
 })
 export class GenreDialogComponent {
-  genres: any[] = [];
-  constructor(public fetchApiData: FetchApiDataService) { }
+  genre: any[] = [];
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   ngOnInit(): void {
-    this.getGenre();
+    console.log(this.data)
+    this.getGenre(this.data.movie.genres[0].name);
   }
 
-  getGenre(): void {
-    this.fetchApiData.getGenre("Oldboy").subscribe((resp: any) => {
-      this.genres = resp;
-      console.log(this.genres);
-      return this.genres;
+  getGenre(name: any): void {
+    this.fetchApiData.getGenre(name).subscribe((resp: any) => {
+      this.genre = resp;
+      console.log(this.genre);
+      return this.genre;
     });
   }
 }
