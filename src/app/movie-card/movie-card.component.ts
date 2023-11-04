@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DirectorDialogComponent } from '../director-dialog/director-dialog.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,7 +15,6 @@ export class MovieCardComponent {
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog
   ) { }
-
 
   ngOnInit(): void {
     this.getMovies();
@@ -30,6 +30,15 @@ export class MovieCardComponent {
 
   openGenreDialog(movie: any): void {
     this.dialog.open(GenreDialogComponent, {
+      width: '280px',
+      data: {
+        movie: movie
+      }
+    });
+  }
+
+  openDirectorDialog(movie: any): void {
+    this.dialog.open(DirectorDialogComponent, {
       width: '280px',
       data: {
         movie: movie
