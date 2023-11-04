@@ -18,7 +18,10 @@
       <button mat-button (click)="openSynopsisDialog(movie)" color="primary">
         Synopsis
       </button>
-      <mat-icon style="margin-left: 10px;">favorite_border</mat-icon>
+      <button mat-icon-button (click)="addToFavorites(movie.title)" style="margin-left: 5px;"
+        aria-label="Favorite button with a heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
