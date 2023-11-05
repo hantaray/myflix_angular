@@ -6,26 +6,26 @@
     <mat-card-content>
       <form>
         <mat-form-field>
-          <input matInput placeholder="{{userOld.username}}" [(ngModel)]="userData.Username" type="text" name="Username"
+          <input matInput placeholder="{{userOld.username}}" [(ngModel)]="userData.username" type="text" name="Username"
             required>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="password" placeholder="{{userOld.password}}" [(ngModel)]="userData.Password"
+          <input matInput type="password" placeholder="{{userOld.password}}" [(ngModel)]="userData.password"
             name="Password" required>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="email" placeholder="{{userOld.email}}" [(ngModel)]="userData.Email" name="Email"
+          <input matInput type="email" placeholder="{{userOld.email}}" [(ngModel)]="userData.email" name="Email"
             required>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="date" placeholder="{{userOld.birthday}}" [(ngModel)]="userData.Birthday"
+          <input matInput type="date" placeholder="{{userOld.birthday}}" [(ngModel)]="userData.birthday"
             name="Birthday">
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="updateUser()" color="primary">
-        Save
+        Update Data
       </button>
     </mat-card-actions>
   </mat-card>

@@ -15,17 +15,15 @@ export class ProfilePageComponent {
     public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar
   ) { }
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { username: '', password: '', email: '', birthday: '' };
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('user');
-    if (this.user) {
-      console.log('this.user', this.user)
-      this.userOld = JSON.parse(this.user);
-      this.user = JSON.parse(this.user);
+    this.userOld = localStorage.getItem('user');
+    if (this.userOld) {
+      this.userOld = JSON.parse(this.userOld);
       this.userData = {
-        Username: this.userOld.username, Password: this.userOld.password, Email: this.userOld.email,
-        Birthday: this.userOld.birthday
+        username: this.userOld.username, password: this.userOld.password, email: this.userOld.email,
+        birthday: this.userOld.birthday
       };
     }
   }
@@ -35,7 +33,8 @@ export class ProfilePageComponent {
       this.snackBar.open(resp, 'Update succesful', {
         duration: 2000
       });
+      localStorage.setItem('user', JSON.stringify(this.userData));
     });
-    localStorage.setItem('user', JSON.stringify(this.userData));
+    this.userOld = localStorage.getItem('user');
   }
 }
