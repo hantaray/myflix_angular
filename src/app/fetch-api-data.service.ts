@@ -59,6 +59,20 @@ export class FetchApiDataService {
     );
   }
 
+  // Making the api call for the movie endpoint
+  getMovieById(id: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'movies/' + id, {
+      headers: new HttpHeaders(
+        {
+          Authorization: 'Bearer ' + token,
+        })
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
   // Making the api call for the director endpoint
   getDirector(name: string): Observable<any> {
     const token = localStorage.getItem('token');
@@ -110,7 +124,7 @@ export class FetchApiDataService {
       })
     }).pipe(
       map(this.extractResponseData),
-      map((data) => data.FavoriteMovies),
+      map((data) => data.favoriteMovies),
       catchError(this.handleError)
     );
   }

@@ -6,7 +6,7 @@ import { DirectorDialogComponent } from '../director-dialog/director-dialog.comp
 import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-movie-card',
