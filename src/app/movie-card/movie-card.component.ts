@@ -6,6 +6,7 @@ import { DirectorDialogComponent } from '../director-dialog/director-dialog.comp
 import { SynopsisDialogComponent } from '../synopsis-dialog/synopsis-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-movie-card',
@@ -15,12 +16,28 @@ import { MatIconModule } from '@angular/material/icon';
 export class MovieCardComponent {
   movies: any[] = [];
   user: any = [];
+  public small: boolean = false;
+  public medium: boolean = false;
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public matIconModule: MatIconModule
-  ) { }
+    public matIconModule: MatIconModule,
+    public breakpointObserver: BreakpointObserver
+  ) {
+    breakpointObserver.observe([
+      '(max-width: 599px)'
+    ]).subscribe(result => {
+      this.small = result.matches;
+    });
+
+    breakpointObserver.observe([
+      '(max-width: 1099px)'
+    ]).subscribe(result => {
+      this.medium = result.matches;
+    });
+  }
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');

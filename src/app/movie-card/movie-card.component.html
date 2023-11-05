@@ -1,7 +1,7 @@
 <h1>
   Movies
 </h1>
-<mat-grid-list class="grid-list" cols="6" rowHeight="1:2">
+<mat-grid-list class="grid-list" [cols]="small ? 1 : medium ? 3 : 6" rowHeight="1:2">
   <mat-grid-tile *ngFor="let movie of movies;" style="flex: 1 1 auto;">
     <mat-card class="movie-card">
       <mat-card-header>
