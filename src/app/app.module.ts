@@ -24,6 +24,7 @@ import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
 import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatIconModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
