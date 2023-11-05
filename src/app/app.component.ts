@@ -15,4 +15,10 @@ export class AppComponent {
   goToPage(title: any): void {
     this.router.navigate([title]);
   }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.router.navigate(['welcome']);
+  }
 }

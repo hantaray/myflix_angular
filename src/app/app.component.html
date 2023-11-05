@@ -7,6 +7,7 @@
   <nav mat-tab-nav-bar [tabPanel]="tabPanel">
     <a mat-tab-link (click)="goToPage('movies')">Movies</a>
     <a mat-tab-link (click)="goToPage('profile')">Profile</a>
+    <a mat-tab-link (click)="logout()">Logout</a>
   </nav>
   <!-- This is needed for the mat-tab-nav-bar (with [tabPanel]="tabPanel" above)
     (https://material.angular.io/components/tabs/examples) -->
