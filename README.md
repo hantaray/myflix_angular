@@ -1,6 +1,19 @@
-# MyflixAngular
+# myFlixangular
+
+<img width="1247" alt="Screen Shot 2023-08-04 at 11 45 11 AM" src="https://github.com/hantaray/myflix-angular/blob/64547381ca4377e4da937c20f0ad8a097835a0bb/src/assets/screenshot.png">
+
+## Description
+
+A Web-Application for movies, made with Angular. You can create a profile, search for movies, get more information and add them to your profile.
+
+The App is hosted on netlify and can be found [here](https://myflixone.netlify.app).
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+
+## API
+
+The project API for the app can be found [here](https://github.com/hantaray/movie_api).
 
 ## Development server
 
