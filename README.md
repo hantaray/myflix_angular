@@ -1,6 +1,6 @@
 # myFlixangular
 
-<img width="1247" alt="Screen Shot 2023-08-04 at 11 45 11 AM" src="src/assets/screenshot.png">
+<img width="1247" alt="Screen Shot 2023-08-04 at 11 45 11 AM" src="[src/assets/screenshot.png](https://github.com/hantaray/myflix-angular/blob/64547381ca4377e4da937c20f0ad8a097835a0bb/src/assets/screenshot.png)">
 
 ## Description
 
