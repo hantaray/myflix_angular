@@ -12,10 +12,19 @@ export class AppComponent {
     private router: Router
   ) { }
 
+  /** @docType method
+   * @name goToPage
+   * @description Changes the page by title.
+   * @param title Title of the page
+   */
   goToPage(title: any): void {
     this.router.navigate([title]);
   }
 
+  /** @docType method
+   * @name logout
+   * @description Logs out the current user
+   */
   logout(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');

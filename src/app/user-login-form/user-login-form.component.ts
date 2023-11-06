@@ -12,9 +12,20 @@ import { Router } from '@angular/router';
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
+
+/**
+ * Component representing a login form.
+ */
 export class UserLoginFormComponent {
   @Input() userData = { username: '', password: '' };
 
+  /**
+   * Constructs the login form component.
+   * @param fetchApiData Service to fetch data from API.
+   * @param dialogRef Reference to the login dialog.
+   * @param snackBar Snackbar for displaying messages.
+   * @param router Router service.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -25,7 +36,9 @@ export class UserLoginFormComponent {
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * Handle the user login.
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       this.dialogRef.close(); // This will close the modal on success!

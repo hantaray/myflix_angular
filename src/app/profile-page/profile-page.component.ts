@@ -37,6 +37,10 @@ export class ProfilePageComponent {
   }
   @Input() userData = { username: '', password: '', email: '', birthday: '' };
 
+  /** 
+   * @name ngOnInit
+   * @description Lifecycle hook that initializes the form and fetches user data and favorite movies.
+   */
   ngOnInit(): void {
     this.userOld = localStorage.getItem('user');
     if (this.userOld) {
@@ -49,6 +53,10 @@ export class ProfilePageComponent {
     this.getMovies();
   }
 
+  /** @docType method
+   * @name updateUser
+   * @description Updates the user data.
+   */
   updateUser(): void {
     this.fetchApiData.updateUser(this.userOld.username, this.userData).subscribe((resp: any) => {
       this.snackBar.open(resp, 'Update succesful', {
@@ -59,6 +67,10 @@ export class ProfilePageComponent {
     this.userOld = localStorage.getItem('user');
   }
 
+  /** @docType method
+   * @name getMovies
+   * @description Fetch movies and update the component state accordingly.
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -67,6 +79,10 @@ export class ProfilePageComponent {
     });
   }
 
+  /** @docType method
+   * @name getMovies
+   * @description Get favorite movies.
+   */
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies(this.userOld.username).subscribe((resp: [string]) => {
       resp.forEach(id => {
@@ -76,6 +92,11 @@ export class ProfilePageComponent {
     });
   }
 
+  /** @docType method
+   * @name removeFromFavorites
+   * @description Remove movie from favorite movies by title.
+   * @param title Title of the movie
+   */
   removeFromFavorites(title: any): void {
     this.fetchApiData.deleteFromFavorites(title).subscribe((resp: any) => {
       this.snackBar.open(resp, 'Removed from Favorites', {
