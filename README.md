@@ -1,4 +1,8 @@
-# myFlixangular
+<p align="center">
+
+<h1 align="center" style="margin-top: 0px;">*** MyFlix Angular ***</h1>
+
+</p>
 
 <img width="1247" alt="Screen Shot 2023-08-04 at 11 45 11 AM" src="https://github.com/hantaray/myflix-angular/blob/64547381ca4377e4da937c20f0ad8a097835a0bb/src/assets/screenshot.png">
 
