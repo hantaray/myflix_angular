@@ -2,13 +2,26 @@ h1 {
   text-align: center;
 }
 
+.content>mat-card {
+  width: 200px;
+}
+
+.header {
+  height: 100px;
+}
+
+.actions {
+  margin-bottom: 10px;
+  width: 100%;
+  display: inline-block;
+}
+
 .movie-card {
-  width: 270px;
+  height: 100%;
   align-items: center;
 }
 
 .movie-img {
-  margin-top: 10px;
-  max-width: 270px;
-  min-height: 420px;
+  height: 80%;
+  width: 100%;
 }

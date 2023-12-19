@@ -3,7 +3,7 @@
     Profile
   </h1>
   <mat-card>
-    <mat-card-content class="content">
+    <mat-card-content class="content-profile">
       <form class="form">
         <p>Username:</p>
         <mat-form-field>
@@ -36,21 +36,23 @@
   <h1>
     Your Favorite Movies
   </h1>
-  <mat-grid-list class="grid-list" [cols]="small ? 1 : medium ? 3 : 6" rowHeight="1:2">
-    <mat-grid-tile *ngFor="let movie of favoriteMovies;" style="flex: 1 1 auto;">
-      <mat-card class="movie-card">
-        <mat-card-header>
-          <mat-card-title>{{movie.title}}</mat-card-title>
-          <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>
-        </mat-card-header>
-        <img class="movie-img" mat-card-image src={{movie.imageURL}} alt={{movie.title}}>
-        <mat-card-actions>
-          <button mat-icon-button (click)="removeFromFavorites(movie.title)" color="warn" style="margin-left: 5px;"
-            aria-label="Favorite button with a heart icon">
-            <mat-icon>favorite</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of favoriteMovies;">
+        <mat-card class="movie-card">
+          <mat-card-header class="header">
+            <mat-card-title>{{movie.title}}</mat-card-title>
+            <mat-card-subtitle>Directed by: {{movie.director.name}}</mat-card-subtitle>
+          </mat-card-header>
+          <img class="movie-img" mat-card-image src={{movie.imageURL}} alt={{movie.title}}>
+          <mat-card-actions>
+            <button mat-icon-button (click)="removeFromFavorites(movie.title)" color="warn" style="margin-left: 5px;"
+              aria-label="Favorite button with a heart icon">
+              <mat-icon>favorite</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>
