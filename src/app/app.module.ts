@@ -25,6 +25,7 @@ import { DirectorDialogComponent } from './director-dialog/director-dialog.compo
 import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatToolbarModule,
     MatTabsModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
