@@ -26,6 +26,7 @@ import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.compo
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatGridListModule,
     FlexLayoutModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
