@@ -21,4 +21,11 @@ export class AppComponent {
     localStorage.removeItem('token');
     this.router.navigate(['welcome']);
   }
+
+  loggedInUser(): boolean {
+    if (localStorage.getItem('user'))
+      return true;
+    else
+      return false;
+  }
 }

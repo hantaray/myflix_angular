@@ -4,7 +4,7 @@
   </button>
   <span class="mat-home">MyFlix</span>
   <span class="example-spacer"></span>
-  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel" *ngIf="loggedInUser()">
     <a mat-tab-link (click)="goToPage('movies')">Movies</a>
     <a mat-tab-link (click)="goToPage('profile')">Profile</a>
     <a mat-tab-link (click)="logout()">Logout</a>
