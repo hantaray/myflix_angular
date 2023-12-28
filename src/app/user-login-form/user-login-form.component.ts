@@ -29,6 +29,7 @@ export class UserLoginFormComponent {
   // This is the function responsible for sending the form inputs to the backend
   loginUser(): void {
     this.isLoading = true;
+    this.ngOnInit();
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       this.dialogRef.close(); // This will close the modal on success!
       localStorage.setItem('user', JSON.stringify(result.user));
@@ -43,5 +44,6 @@ export class UserLoginFormComponent {
       });
     });
     this.isLoading = false;
+    this.ngOnInit();
   }
 }
