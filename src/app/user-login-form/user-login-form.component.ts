@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 })
 export class UserLoginFormComponent {
   @Input() userData = { username: '', password: '' };
-  public isLoading: boolean = false;
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -28,12 +27,17 @@ export class UserLoginFormComponent {
 
   // This is the function responsible for sending the form inputs to the backend
   loginUser(): void {
-    this.isLoading = true;
-    this.ngOnInit();
+    // Fix for not working progress spinner
+    this.snackBar.open("Loading, please wait", 'OK', {
+      duration: 50000
+    });
+
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       this.dialogRef.close(); // This will close the modal on success!
       localStorage.setItem('user', JSON.stringify(result.user));
       localStorage.setItem('token', result.token);
+
+      this.snackBar.dismiss();
       this.snackBar.open("Login succesful", 'OK', {
         duration: 2000
       });
@@ -43,7 +47,5 @@ export class UserLoginFormComponent {
         duration: 2000
       });
     });
-    this.isLoading = false;
-    this.ngOnInit();
   }
 }
