@@ -29,7 +29,7 @@ export class UserLoginFormComponent {
   loginUser(): void {
     // Fix for not working progress spinner
     this.snackBar.open("Loading, please wait", 'OK', {
-      duration: 50000
+      duration: 60000
     });
 
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
