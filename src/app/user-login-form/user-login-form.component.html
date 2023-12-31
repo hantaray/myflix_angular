@@ -16,5 +16,11 @@
     <button mat-raised-button (click)="loginUser()" color="primary">
       Log in
     </button>
+    <mat-progress-spinner *ngIf="loading" class="progress-spinner" diameter="40" mode="indeterminate"
+      color="primary"></mat-progress-spinner>
   </mat-card-actions>
+  <!-- <mat-card-content *ngIf="loading">
+    <p>Loading, please wait...</p>
+    <mat-progress-spinner value="indeterminate"></mat-progress-spinner>
+  </mat-card-content> -->
 </mat-card>
