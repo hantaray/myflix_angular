@@ -22,5 +22,7 @@
     <button mat-raised-button (click)="registerUser()" color="primary">
       Sign Up
     </button>
+    <mat-progress-spinner *ngIf="loading" class="progress-spinner" diameter="40" mode="indeterminate"
+      color="primary"></mat-progress-spinner>
   </mat-card-actions>
 </mat-card>

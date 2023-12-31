@@ -13,8 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./user-registration-form.component.scss']
 })
 export class UserRegistrationFormComponent implements OnInit {
-
   @Input() userData = { username: '', password: '', email: '', birthday: '' };
+  loading: boolean = false;
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -28,6 +28,7 @@ export class UserRegistrationFormComponent implements OnInit {
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
       this.dialogRef.close(); // This will close the modal on success!
+      this.loading = false;
       this.snackBar.open("Sucessful", 'OK', {
         duration: 2000
       });
@@ -36,6 +37,7 @@ export class UserRegistrationFormComponent implements OnInit {
         duration: 2000
       });
     });
-  }
 
+    this.loading = true;
+  }
 }
