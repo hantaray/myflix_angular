@@ -17,13 +17,13 @@
         <input matInput [(ngModel)]="userData.birthday" type="date" placeholder="Birthday" name="Birthday">
       </mat-form-field>
     </form>
+    <mat-card-actions>
+      <button mat-raised-button (click)="registerUser()" color="primary">
+        Sign Up
+      </button>
+      <p *ngIf="loading" class="loadingText">Loading...</p>
+      <mat-progress-spinner *ngIf="loading" class="progress-spinner" diameter="30" mode="indeterminate"
+        color="primary"></mat-progress-spinner>
+    </mat-card-actions>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="registerUser()" color="primary">
-      Sign Up
-    </button>
-    <p *ngIf="loading" class="loadingText">Loading...</p>
-    <mat-progress-spinner *ngIf="loading" class="progress-spinner" diameter="30" mode="indeterminate"
-      color="primary"></mat-progress-spinner>
-  </mat-card-actions>
 </mat-card>
