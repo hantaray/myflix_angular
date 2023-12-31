@@ -1,4 +1,4 @@
-<mat-card style="align-items: center;">
+<mat-card>
   <mat-card-header>
     <mat-card-title>Log in!</mat-card-title>
   </mat-card-header>
@@ -11,16 +11,13 @@
         <input matInput [(ngModel)]="userData.password" type="password" placeholder="Password" name="Password" required>
       </mat-form-field>
     </form>
+    <mat-card-actions>
+      <button mat-raised-button (click)="loginUser()" color="primary">
+        Log in
+      </button>
+      <p class="loadingText">Loading...</p>
+      <mat-progress-spinner class="progress-spinner" diameter="30" mode="indeterminate"
+        color="primary"></mat-progress-spinner>
+    </mat-card-actions>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="loginUser()" color="primary">
-      Log in
-    </button>
-    <mat-progress-spinner *ngIf="loading" class="progress-spinner" diameter="40" mode="indeterminate"
-      color="primary"></mat-progress-spinner>
-  </mat-card-actions>
-  <!-- <mat-card-content *ngIf="loading">
-    <p>Loading, please wait...</p>
-    <mat-progress-spinner value="indeterminate"></mat-progress-spinner>
-  </mat-card-content> -->
 </mat-card>
