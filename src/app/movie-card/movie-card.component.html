@@ -21,9 +21,9 @@
           <button mat-button (click)="openSynopsisDialog(movie)" color="primary">
             Synopsis
           </button>
-          <button *ngIf="isFavorite(movie)" mat-button (click)="addToFavorites(movie)" color="warn"
+          <button mat-button (click)="addToFavorites(movie)" color="warn"
             aria-label="Favorite button with a heart icon">
-            <mat-icon>favorite</mat-icon>
+            <mat-icon>{{ isFavorite(movie) ? 'favorite' : 'favorite_border' }}</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>
