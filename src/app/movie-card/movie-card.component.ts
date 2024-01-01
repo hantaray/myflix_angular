@@ -16,6 +16,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class MovieCardComponent {
   movies: any[] = [];
   favoriteMovies: any[] = [];
+  favoriteMovieIds: any = [];
   user: any = [];
   public small: boolean = false;
   public medium: boolean = false;
@@ -54,9 +55,11 @@ export class MovieCardComponent {
   }
 
   getFavoriteMovies(): void {
-    this.fetchApiData.getFavoriteMovies(JSON.parse(this.user).username).subscribe((resp: any) => {
-      this.favoriteMovies = resp;
-      return this.favoriteMovies;
+    this.fetchApiData.getFavoriteMovies(JSON.parse(this.user).username).subscribe((resp: [string]) => {
+      resp.forEach(id => {
+        this.favoriteMovieIds.push(id);
+      });
+      this.favoriteMovies = this.movies.filter(m => this.favoriteMovieIds.includes(m._id))
     });
   }
 
