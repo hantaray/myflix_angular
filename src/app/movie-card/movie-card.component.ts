@@ -43,24 +43,32 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
-    this.getMovies();
-    this.getFavoriteMovies()
+    this.movies = this.getMovies();
+    this.favoriteMovies = this.getFavoriteMovies()
   }
 
-  getMovies(): void {
+  getMovies(): any {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       return this.movies;
     });
   }
 
-  getFavoriteMovies(): void {
+  getFavoriteMovies(): any {
     this.fetchApiData.getFavoriteMovies(JSON.parse(this.user).username).subscribe((resp: [string]) => {
       resp.forEach(id => {
         this.favoriteMovieIds.push(id);
       });
       this.favoriteMovies = this.movies.filter(m => this.favoriteMovieIds.includes(m._id))
     });
+  }
+
+  isFavorite(movie: any): boolean {
+    if (this.favoriteMovieIds.includes(movie._id)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   openGenreDialog(movie: any): void {
@@ -90,8 +98,8 @@ export class MovieCardComponent {
     });
   }
 
-  addToFavorites(title: any): void {
-    this.fetchApiData.addToFavorites(title).subscribe((resp: any) => {
+  addToFavorites(movie: any): void {
+    this.fetchApiData.addToFavorites(movie.title).subscribe((resp: any) => {
       this.snackBar.open(resp, 'Added to Favorites', {
         duration: 2000
       });

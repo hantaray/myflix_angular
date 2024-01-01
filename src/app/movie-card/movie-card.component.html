@@ -21,7 +21,7 @@
           <button mat-button (click)="openSynopsisDialog(movie)" color="primary">
             Synopsis
           </button>
-          <button mat-button (click)="addToFavorites(movie.title)" color="warn"
+          <button *ngIf="isFavorite(movie)" mat-button (click)="addToFavorites(movie)" color="warn"
             aria-label="Favorite button with a heart icon">
             <mat-icon>favorite</mat-icon>
           </button>
