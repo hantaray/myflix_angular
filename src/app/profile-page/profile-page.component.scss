@@ -13,6 +13,15 @@ h1 {
   align-self: center;
 }
 
+.content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.content>mat-card {
+  width: 200px;
+}
+
 .header {
   height: 100px;
 }
