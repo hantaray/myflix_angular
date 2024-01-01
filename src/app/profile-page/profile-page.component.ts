@@ -78,7 +78,7 @@ export class ProfilePageComponent {
 
   removeFromFavorites(title: any): void {
     this.fetchApiData.deleteFromFavorites(title).subscribe((resp: any) => {
-      this.snackBar.open(resp, 'Removed from Favorites', {
+      this.snackBar.open('Removed from Favorites', 'OK', {
         duration: 2000
       });
       // Update the favoriteMovies array after removal

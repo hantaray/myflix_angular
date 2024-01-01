@@ -115,7 +115,7 @@ export class MovieCardComponent {
           this.favoriteMovies.splice(movieIndex, 1);
         }
 
-        this.snackBar.open(resp, 'Removed from Favorites', {
+        this.snackBar.open('Removed from Favorites', 'Ok', {
           duration: 2000
         });
       });
@@ -125,7 +125,7 @@ export class MovieCardComponent {
         this.favoriteMovieIds.push(movie._id);
         this.favoriteMovies.push(movie);
 
-        this.snackBar.open(resp, 'Added to Favorites', {
+        this.snackBar.open('Added to Favorites', 'Ok', {
           duration: 2000
         });
       });
