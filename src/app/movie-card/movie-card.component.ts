@@ -103,6 +103,9 @@ export class MovieCardComponent {
       this.snackBar.open(resp, 'Added to Favorites', {
         duration: 2000
       });
+      // Update local data
+      this.favoriteMovieIds.push(movie._id);
+      this.favoriteMovies.push(movie);
     });
   }
 }

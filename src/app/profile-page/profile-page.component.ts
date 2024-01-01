@@ -81,6 +81,8 @@ export class ProfilePageComponent {
       this.snackBar.open(resp, 'Removed from Favorites', {
         duration: 2000
       });
+      // Update the favoriteMovies array after removal
+      this.favoriteMovies = this.favoriteMovies.filter(m => m.title !== title);
     });
   }
 }
