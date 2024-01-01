@@ -98,14 +98,37 @@ export class MovieCardComponent {
     });
   }
 
-  addToFavorites(movie: any): void {
-    this.fetchApiData.addToFavorites(movie.title).subscribe((resp: any) => {
-      this.snackBar.open(resp, 'Added to Favorites', {
-        duration: 2000
+  addRemoveFavorites(movie: any): void {
+    // Check if the movie is already in favorites
+    const isAlreadyFavorite = this.favoriteMovieIds.includes(movie._id);
+
+    if (isAlreadyFavorite) {
+      // If it's already in favorites, remove it
+      this.fetchApiData.deleteFromFavorites(movie.title).subscribe((resp: any) => {
+        const index = this.favoriteMovieIds.indexOf(movie._id);
+        if (index !== -1) {
+          this.favoriteMovieIds.splice(index, 1);
+        }
+
+        const movieIndex = this.favoriteMovies.findIndex(m => m._id === movie._id);
+        if (movieIndex !== -1) {
+          this.favoriteMovies.splice(movieIndex, 1);
+        }
+
+        this.snackBar.open(resp, 'Removed from Favorites', {
+          duration: 2000
+        });
       });
-      // Update local data
-      this.favoriteMovieIds.push(movie._id);
-      this.favoriteMovies.push(movie);
-    });
+    } else {
+      // If it's not in favorites, add it
+      this.fetchApiData.addToFavorites(movie.title).subscribe((resp: any) => {
+        this.favoriteMovieIds.push(movie._id);
+        this.favoriteMovies.push(movie);
+
+        this.snackBar.open(resp, 'Added to Favorites', {
+          duration: 2000
+        });
+      });
+    }
   }
 }

@@ -21,7 +21,7 @@
           <button mat-button (click)="openSynopsisDialog(movie)" color="primary">
             Synopsis
           </button>
-          <button mat-button (click)="addToFavorites(movie)" color="warn"
+          <button mat-button (click)="addRemoveFavorites(movie)" color="warn"
             aria-label="Favorite button with a heart icon">
             <mat-icon>{{ isFavorite(movie) ? 'favorite' : 'favorite_border' }}</mat-icon>
           </button>
