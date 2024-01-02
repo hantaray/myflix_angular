@@ -15,14 +15,12 @@ export class GenreDialogComponent {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.getGenre(this.data.movie.genres[0].name);
   }
 
   getGenre(name: any): void {
     this.fetchApiData.getGenre(name).subscribe((resp: any) => {
       this.genre = resp;
-      console.log(this.genre);
       return this.genre;
     });
   }
